@@ -76,5 +76,8 @@ elementos = driver.find_elements(By.XPATH, '//div[@id="gridItemRoot"]')[:30]
 
 Se realizan las iteraciones, y por último se crea un Dataframe con las listas.
 
+##### Referencias
+- https://www.selenium.dev/documentation/webdriver/getting_started/first_script/
+- https://aprendepython.es/pypi/scraping/selenium/
 
 
