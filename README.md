@@ -29,6 +29,52 @@ Para localizar los elementos siempre se ingresa el método ``` find_element() ``
 Los elementos a colocar en el método find_element() se buscan en el código HTML que proporciona cada página;
 
 
+![ID del buscador de Amazon](id_buscador_amazon.png)
+
+
+
+```
+driver = webdriver.Chrome()
+driver.get("https://www.amazon.com/es")
+
+
+time.sleep(5)
+
+try:
+    
+    buscar_amazon = driver.find_element(By.ID, "twotabsearchtextbox")
+    buscar_amazon.click()
+    buscar_amazon.send_keys("book")
+    buscar_amazon.submit()
+    
+except:
+    pass
+
+```
+
+Luego, con otros localizadores, como find_element(By.PARTIAL_LINK_TEXT) se puede buscar "Libros en Español" y "los más vendidos".
+
+```    
+    buscar_libros = driver.find_element(By.PARTIAL_LINK_TEXT, "Libros en Español")
+    buscar_libros.click()
+
+```
+
+
+En la segunda parte de código se itera por cada uno de los elementos con el fin de obtener los Id, luego se realiza otra iteración para abrir página por página los libros y obtener el nombre de los libros, los autores y los comentarios principalmente. 
+
+En el código HTML se observa que el ID para todos los elementos es "gridItemRoot". 
+
+![ID de los elementos](elementos_amazon.png)
+
+Se copia el XPath para asignarlo al localizador y se limita a los primeros 30 elementos.
+
+```
+elementos = driver.find_elements(By.XPATH, '//div[@id="gridItemRoot"]')[:30]
+
+```
+
+Se realizan las iteraciones, y por último se crea un Dataframe con las listas.
 
 
 
